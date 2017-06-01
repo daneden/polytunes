@@ -30,6 +30,9 @@ class AppleLibrary extends Library {
 
                 if(!items || items.length === 0)
                     return debug("Ignoring playlist: %s (empty)", playlist.Name);
+                
+                if(items.length >= 1000)
+                    return debug("Ignoring playlist: %s (too many songs)", playlist.Name);
 
                 const applePlaylist = ApplePlaylist.fromItunes(playlist);
                 debug("Creating playlist: %s", playlist.Name);
